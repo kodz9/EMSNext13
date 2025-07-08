@@ -27,7 +27,7 @@ struct ProfilePage {
 
       // 头像区域
       Column() {
-        Image($r('app.media.plant')) // 请替换为您的头像资源
+        Image($r("app.media.myplant")) // 请替换为您的头像资源
           .width(80)
           .height(80)
           .borderRadius(40)
