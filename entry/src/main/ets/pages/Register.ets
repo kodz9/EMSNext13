@@ -60,7 +60,7 @@ struct RegisterPage {
             });
           });
         })
-      Button('返回登录')
+      Button('返  回')
         .width('60%')
         .height(50)
         .margin(10)
