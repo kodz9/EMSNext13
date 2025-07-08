@@ -5,6 +5,8 @@
     "pages/MainView",
     "pages/Mine",
     "pages/Individual",
-    "pages/Message"
+    "pages/Message",
+    "pages/PlantDetail",
+    "pages/AI"
   ]
 }

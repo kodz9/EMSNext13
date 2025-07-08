@@ -13,13 +13,13 @@ function getStatusBadgeColor(stat: number): string {
   return baseColors[stat] + '26'; // 添加透明度
 }
 
-// 获取状态渐变色
+// 获取状态渐变色 - 调整为更浅的颜色
 function getStatusGradientColors(stat: number): [string, number][] {
   switch (stat) {
-    case 0: return [['#4CAF50', 0.0], ['#66BB6A', 1.0]];
-    case 1: return [['#FFC107', 0.0], ['#FFD54F', 1.0]];
-    case 2: return [['#F44336', 0.0], ['#EF5350', 1.0]];
-    default: return [['#9E9E9E', 0.0], ['#BDBDBD', 1.0]];
+    case 0: return [['#A5D6A7', 0.0], ['#C8E6C9', 1.0]]; // 更浅的绿色
+    case 1: return [['#FFE082', 0.0], ['#FFF3C4', 1.0]]; // 更浅的黄色
+    case 2: return [['#FFAB91', 0.0], ['#FFCCBC', 1.0]]; // 更浅的红色
+    default: return [['#E0E0E0', 0.0], ['#F5F5F5', 1.0]]; // 更浅的灰色
   }
 }
 
@@ -70,7 +70,7 @@ export struct PottedPlantsComponent {
     .scale({ x: this.badgeScale, y: this.badgeScale })
     .shadow({
       radius: 6,
-      color: this.getBackgroudColor() + '40',
+      color: this.getBackgroudColorString() + '20', // 使用字符串方法
       offsetX: 0,
       offsetY: 2
     })
@@ -152,7 +152,7 @@ export struct PottedPlantsComponent {
     .opacity(this.cardOpacity)
     .shadow({
       radius: 16,
-      color: this.getBackgroudColor() + '30',
+      color: this.getBackgroudColorString() + '15', // 使用字符串方法
       offsetX: 0,
       offsetY: 8
     })
@@ -169,21 +169,32 @@ export struct PottedPlantsComponent {
     }
   }
 
+  // 返回字符串颜色值，用于阴影等需要字符串的地方
+  getBackgroudColorString(): string {
+    switch (this.item.stat) {
+      case 0: return '#A5D6A7'; // 更浅的绿色
+      case 1: return '#FFE082'; // 更浅的黄色
+      case 2: return '#FFAB91'; // 更浅的红色
+      default: return '#E0E0E0'; // 更浅的灰色
+    }
+  }
+
+  // 返回Color类型，用于需要Color类型的地方
   getBackgroudColor(): Color {
     switch (this.item.stat) {
-      case 0: return Color.Green;
-      case 1: return Color.Yellow;
-      case 2: return Color.Red;
-      default: return Color.Gray;
+      case 0: return Color.Green; // 使用预定义的绿色
+      case 1: return Color.Yellow; // 使用预定义的黄色
+      case 2: return Color.Red; // 使用预定义的红色
+      default: return Color.Gray; // 使用预定义的灰色
     }
   }
 
   getFontColor(): Color {
     switch (this.item.stat) {
-      case 0: return Color.White;
-      case 1: return Color.Black;
-      case 2: return Color.White;
-      default: return Color.White;
+      case 0: return Color.Green; // 深绿色文字
+      case 1: return Color.Orange; // 橙色文字
+      case 2: return Color.Red; // 深红色文字
+      default: return Color.Black; // 黑色文字
     }
   }
 }
