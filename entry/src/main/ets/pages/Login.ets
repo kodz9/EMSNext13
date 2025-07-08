@@ -43,7 +43,7 @@ struct login {
           Rdb.queryUser(this.username, this.password, (success: boolean) => {
             if (success) {
               promptAction.showToast({ message: '登录成功' });
-              router.pushUrl({ url: 'pages/MainPage' });
+              router.pushUrl({ url: 'pages/MainView' });
             } else {
               promptAction.showToast({ message: '用户名或密码错误' });
             }
