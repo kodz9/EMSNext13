@@ -2,6 +2,9 @@
   "src": [
     "pages/Login",
     "pages/Register",
-    "pages/MainView"
+    "pages/MainView",
+    "pages/Mine",
+    "pages/Individual",
+    "pages/Message"
   ]
 }

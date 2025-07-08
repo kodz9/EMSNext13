@@ -49,7 +49,7 @@ struct SmartHomeControl {
       .height(150)
       .justifyContent(FlexAlign.Start)
       .backgroundColor('#f5f5f5')
-      .backgroundImage($r("app.media.myplant")) // 添加背景图片
+      .backgroundImage($r("app.media.plant")) // 添加背景图片
       .backgroundImageSize({ width: '100%', height: '100%' }) // 确保图片填满整个区域
       .padding({ top:0}) // 去除顶部内边距
       .margin({ top: 0 })
@@ -239,7 +239,7 @@ struct SmartHomeControl {
         .onClick(() => {
           console.info(`Succeeded in clicking the 'Next' button.`)
           // 跳转到第二页
-          router.pushUrl({ url: 'pages/Index' }).then(() => {
+          router.pushUrl({ url: 'pages/Mine' }).then(() => {
             console.info('Succeeded in jumping to the second page.')
 
           }).catch((err: BusinessError) => {
