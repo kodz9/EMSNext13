@@ -94,7 +94,7 @@ struct PlantMessagePage {
 
       // 可滚动的内容区域
       Scroll() {
-        Column() {
+        Column({ space: 70 }) {
           // 消息列表
           List({ space: 10 }) {
             ForEach(this.messages, (item: PlantMessage, index: number) => {
@@ -153,7 +153,8 @@ struct PlantMessagePage {
         }
       }
       .width('100%')
-      .layoutWeight(1) // 占据剩余空间
+      .height(680)
+
 
       // 底部导航栏（固定不滚动）
       Row() {
