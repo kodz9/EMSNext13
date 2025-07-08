@@ -13,7 +13,6 @@ struct SmartHomeControl {
   @State currentTab: string = '我的植物'
   @State currentTab02: string = '我的植物'
   @State currentRoom: string = '重点植物'
-  @State connectedDevices: number = 15
   @State devices: Array<GeneratedTypeLiteralInterface_1> = [
     { name: '蝴蝶兰', status: false },
     { name: '万年青',  status: false },
@@ -99,7 +98,7 @@ struct SmartHomeControl {
               Text('我的植物总览')
                 .fontSize(18)
                 .margin({ bottom: 5 })
-              Text(`已栽种 ${this.connectedDevices} 株植物`)
+              Text(`已栽种 ${this.devices.length} 株植物`)
                 .fontSize(14)
                 .fontColor('#888888')
             }
