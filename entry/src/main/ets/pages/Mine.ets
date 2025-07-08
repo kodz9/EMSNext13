@@ -1,4 +1,5 @@
 import router from '@ohos.router';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 主页面
 @Entry
@@ -15,7 +16,7 @@ struct GatewayManagementPage {
   ];
 
   build() {
-    Column({ space: 40 }) {
+    Column({ space: 73 }) {
       // 标题栏
       Text('MyPlant')
         .fontSize(45)
@@ -51,23 +52,70 @@ struct GatewayManagementPage {
 
       // 底部导航栏
       Row() {
-        Text('首页')
-          .fontSize(16)
-          .fontColor('#1A8CFF')
+        Column() {
+          Image($r('app.media.mainview'))
+            .width(30)
+            .height(30)
+            .margin({ right:80 })
+          Text('首页')
+            .fontSize(20)
+            .margin({ right: 80 })
+        }
+        .onClick(() => {
+          console.info(`Succeeded in clicking the 'Next' button.`)
+          // 跳转到第二页
+          router.pushUrl({ url: 'pages/MainView' }).then(() => {
+            console.info('Succeeded in jumping to the second page.')
 
-        Text('场景')
-          .fontSize(16)
-          .fontColor('#999999')
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to jump to the second page. Code is ${err.code}, message is ${err.message}`)
+          })
+        })
 
-        Text('我的')
-          .fontSize(16)
-          .fontColor('#999999')
+        Column() {
+          Image($r('app.media.message'))
+            .width(30)
+            .height(30)
+            .margin({ right:80 })
+          Text('信息')
+            .fontSize(20)
+            .margin({ right: 80 })
+        }
+        .onClick(() => {
+          console.info(`Succeeded in clicking the 'Next' button.`)
+          // 跳转到第二页
+          router.pushUrl({ url: 'pages/Message' }).then(() => {
+            console.info('Succeeded in jumping to the second page.')
+
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to jump to the second page. Code is ${err.code}, message is ${err.message}`)
+          })
+        })
+
+        Column() {
+          Image($r('app.media.mine'))
+            .width(30)
+            .height(30)
+          //  .margin({ right: 60 })
+          Text('我的')
+            .fontSize(20)
+        }
+        .onClick(() => {
+          console.info(`Succeeded in clicking the 'Next' button.`)
+          // 跳转到第二页
+          router.pushUrl({ url: 'pages/Mine' }).then(() => {
+            console.info('Succeeded in jumping to the second page.')
+
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to jump to the second page. Code is ${err.code}, message is ${err.message}`)
+          })
+        })
       }
+      .padding(8)
       .width('100%')
-      .height(60)
-      .padding({ left: 40, right: 40 })
-      .backgroundColor('#FFFFFF')
-      .position({ bottom: 0 })
+      .height(72)
+      .justifyContent(FlexAlign.Center)
+      .backgroundColor('#ffeeeeee')
     }
     .height('100%')
     .width('100%')
