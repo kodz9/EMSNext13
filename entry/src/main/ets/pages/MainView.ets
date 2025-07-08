@@ -247,7 +247,7 @@ struct SmartHomeControl {
         .onClick(() => {
           console.info(`Succeeded in clicking the 'Next' button.`)
           // 跳转到第二页
-          router.pushUrl({ url: 'pages/Index' }).then(() => {
+          router.pushUrl({ url: 'pages/Mine' }).then(() => {
             console.info('Succeeded in jumping to the second page.')
 
           }).catch((err: BusinessError) => {
