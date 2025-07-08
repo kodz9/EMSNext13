@@ -16,7 +16,7 @@ struct GatewayManagementPage {
   ];
 
   build() {
-    Column({ space: 40 }) {
+    Column({ space: 73 }) {
       // 标题栏
       Text('MyPlant')
         .fontSize(45)
