@@ -11,6 +11,7 @@ interface GeneratedTypeLiteralInterface_1 {
 @Component
 struct SmartHomeControl {
   @State currentTab: string = '我的植物'
+  @State currentTab02: string = '我的植物'
   @State currentRoom: string = '重点植物'
   @State connectedDevices: number = 15
   @State devices: Array<GeneratedTypeLiteralInterface_1> = [
@@ -49,18 +50,18 @@ struct SmartHomeControl {
       .height(150)
       .justifyContent(FlexAlign.Start)
       .backgroundColor('#f5f5f5')
-      .backgroundImage($r('app.media.plant')) // 添加背景图片
+      .backgroundImage($r("app.media.plant")) // 添加背景图片
       .backgroundImageSize({ width: '100%', height: '100%' }) // 确保图片填满整个区域
       .padding({ top:0}) // 去除顶部内边距
       .margin({ top: 0 })
 
       // 选项卡
       Row() {
-        Text(this.currentTab)
+        Text(this.currentTab02)
           .fontSize(18)
           .fontWeight(FontWeight.Bold)
           .margin({ left: 20, right: 30 })
-          .fontColor(this.currentTab === '我的植物' ? '#ff289268' : '#ff000000')
+          .fontColor(this.currentTab=== '我的植物' ? '#ff289268' : '#ff000000')
           .onClick(() => {
             this.currentTab = '我的植物'
           })
@@ -69,7 +70,7 @@ struct SmartHomeControl {
           .fontSize(18)
           .fontWeight(FontWeight.Bold)
           .margin({ right: 30 })
-          .fontColor(this.currentTab === '重点植物' ? '#ff289268' : '#ff000000')
+          .fontColor(this.currentTab   === '重点植物' ? '#ff289268': '#ff000000')
           .onClick(() => {
             this.currentTab = '重点植物'
           })
@@ -93,7 +94,6 @@ struct SmartHomeControl {
       // 主内容区 - 设置为可滚动
       Scroll() {
         Column() {
-          // 网关状态
           Row() {
             Column() {
               Text('我的植物总览')
@@ -151,8 +151,16 @@ struct SmartHomeControl {
                     .onClick(() => {
                       this.toggleDevice(index)
                       console.info(`Succeeded in clicking the 'Next' button.`)
+                      setTimeout(() => {
+                        // 假设初始状态为 false，根据你的需求调整逻辑
+                        if (this.devices[index].status) {
+                          this.devices[index].status = false;
+                          this.devices = [...this.devices]; // 触发状态更新
+                        }
+                      }, 500); // 500ms 延迟
+
                       // 跳转到第二页
-                      router.pushUrl({ url: 'pages/Index' }).then(() => {
+                      router.pushUrl({ url: 'pages/PlantDetail' }).then(() => {
                         console.info('Succeeded in jumping to the second page.')
 
                       }).catch((err: BusinessError) => {
