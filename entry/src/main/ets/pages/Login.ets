@@ -39,6 +39,12 @@ struct login {
             promptAction.showToast({ message: '请输入用户名和密码' });
             return;
           }
+          // 内置管理员账号判断
+          if (this.username === 'admin' && this.password === '12345') {
+            promptAction.showToast({ message: '管理员登录成功' });
+            router.pushUrl({ url: 'pages/MainView' });
+            return;
+          }
           // 验证登录
           Rdb.queryUser(this.username, this.password, (success: boolean) => {
             if (success) {
